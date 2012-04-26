@@ -123,6 +123,30 @@ describe Project do
     end
   end
 
+  describe "#location" do
+    subject { project.location }
+
+    context "location set but empty" do
+      before do
+        project.location = ""
+      end
+
+      it { should == "Other" }
+    end
+
+    context "location set" do
+      before do
+        project.location = "Outer Space"
+      end
+
+      it { should == "Outer Space" }
+    end
+
+    context "location not set" do
+      it { should == "Other" }
+    end
+  end
+
   describe "#last green" do
     it "should return the successful project" do
       project = projects(:socialitis)
